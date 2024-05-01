@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#webcam-container {
+    /* Styles spécifiques au conteneur de la webcam si nécessaire */
+}
+
+#label-container {
+    /* Styles spécifiques au conteneur des labels si nécessaire */
+}
