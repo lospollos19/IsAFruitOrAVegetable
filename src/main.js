@@ -20,15 +20,20 @@ async function init() {
     for (let i = 0; i < maxPredictions; i++) {
         const label = document.createElement("label");
         label.textContent = classNames[i];
+        label.classList.add("percent-text")
+        label.setAttribute('id', classNames[i]);
         progressContainer.appendChild(label);
         progressLabels.push(label);
-        const progressBar = document.createElement("progress");
+        const progressBar = document.createElement("div");
+        progressBar.classList.add("bardata")
         progressBar.max = 1;
         progressBar.value = 0;
         progressBar.style.width = `${webcam.canvas.width}px`;
+        progressBar.setAttribute('id', classNames[i]);
         progressContainer.appendChild(progressBar);
     }
     document.querySelector('button').style.display = 'none';
+    document.querySelector("div#legend").style.display = 'flex'
 }
 
 async function loop() {
@@ -39,11 +44,17 @@ async function loop() {
 
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
-    const sortedPrediction = prediction.sort((a, b) => b.probability - a.probability);
     for (let i = 0; i < maxPredictions; i++) {
-        progressContainer.childNodes[i * 2 + 1].value = sortedPrediction[i].probability;
-        const newLabelText = `${sortedPrediction[i].className}: ${(sortedPrediction[i].probability * 100).toFixed(2)}%`;
+        progressContainer.childNodes[i * 2 + 1].value = prediction[i].probability;
+        const webcam_height = document.getElementById("webcam-container").getBoundingClientRect().height
+        progressContainer.childNodes[i * 2 + 1].style.width = `${(prediction[i].probability).toFixed(4) * webcam_height}px`;
+        const newLabelText = `${(prediction[i].probability * 100).toFixed(0)}%`;
         progressLabels[i].textContent = newLabelText;
+    }
+    if(prediction[0].probability > 0.5) {
+        webcam.canvas.style.borderColor = '#ed1019'
+    } else {
+        webcam.canvas.style.borderColor = '#478502'
     }
 }
 
