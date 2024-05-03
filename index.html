@@ -6,8 +6,8 @@
     <title>Fruits ou Légumes ?</title>
     <style>
         :root {
-            --color-my-green: #478502;
-            --color-my-red: #ed1019;
+            --color-my-yellow: #fece01;
+            --color-my-purple: #714197;
         }
 
         .flex {
@@ -34,11 +34,11 @@
         }
 
         .legend-color#légume {
-            background-color: var(--color-my-red);
+            background-color: var(--color-my-purple);
         }
 
         .legend-color#fruit {
-            background-color: var(--color-my-green);
+            background-color: var(--color-my-yellow);
         }
 
         label {
@@ -46,19 +46,19 @@
         }
 
         label#Légume {
-            color: var(--color-my-red);
+            color: var(--color-my-purple);
         }
 
         label#Fruit {
-            color: var(--color-my-green);
+            color: var(--color-my-yellow);
         }
 
         .bardata#Légume {
-            background-color: var(--color-my-red);
+            background-color: var(--color-my-purple);
         }
 
         .bardata#Fruit {
-            background-color: var(--color-my-green);
+            background-color: var(--color-my-yellow);
         }
 
 
@@ -100,13 +100,13 @@
             border-radius: 10px;
             border: none;
             color: white;
-            background-color: var(--color-my-red);
+            background-color: var(--color-my-purple);
             font-size: 15px;
             padding: 10px;
         }
 
         .button:hover {
-            background-color: var(--color-my-green);
+            background-color: var(--color-my-yellow);
             font-size: 18px;
             cursor: pointer;
         }
@@ -137,7 +137,7 @@
 <body>
 <div class="screen" id="app">
     <div class="container">
-        <img src="Fruit%20Légume%20Logo.png" height="150px">
+        <img src="FruitLégumeLogo.png" height="150px">
         <button type="button" class="button" onclick="init()">Start</button>
         <div id="webcam-container"></div>
         <div class="barchart" id="progress-container"></div>

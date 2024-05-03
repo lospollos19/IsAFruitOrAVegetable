@@ -52,9 +52,9 @@ async function predict() {
         progressLabels[i].textContent = newLabelText;
     }
     if(prediction[0].probability > 0.5) {
-        webcam.canvas.style.borderColor = '#ed1019'
+        webcam.canvas.style.borderColor = '#714197'
     } else {
-        webcam.canvas.style.borderColor = '#478502'
+        webcam.canvas.style.borderColor = '#fece01'
     }
 }
 
