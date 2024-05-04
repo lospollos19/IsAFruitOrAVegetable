@@ -11,6 +11,6 @@ npm install
 ```
 - Enfin, il faut lancer le serveur avec la commande suivante
 ```bash
-htpp-server
+http-server
 ```
 - Ouvrir le navigateur et aller à l'adresse donnée.
