@@ -5,50 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruits ou Légumes ?</title>
     <style>
+        :root {
+            --color-my-yellow: #fece01;
+            --color-my-purple: #714197;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .legend-text {
+            font: 700 0.75rem sans-serif;
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+
+        .legend {
+            padding: 10px;
+            display: none;
+            margin: auto;
+            justify-content: center;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 10px;
+            border-radius: 10px;
+        }
+
+        .legend-color#légume {
+            background-color: var(--color-my-purple);
+        }
+
+        .legend-color#fruit {
+            background-color: var(--color-my-yellow);
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        label#Légume {
+            color: var(--color-my-purple);
+        }
+
+        label#Fruit {
+            color: var(--color-my-yellow);
+        }
+
+        .bardata#Légume {
+            background-color: var(--color-my-purple);
+        }
+
+        .bardata#Fruit {
+            background-color: var(--color-my-yellow);
+        }
+
+
+        .barchart {
+            border-radius: 6px;
+            display: flex;
+            flex-direction: row;
+            height: inherit;
+        / / inherit will take in the height of its parent, you could also / / use 100 % if the parent 's height is set. width: 4 em;
+            overflow: hidden;
+        }
+
+        .bardata {
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
+        .percent-text {
+            font: 700 1.25rem sans-serif;
+            text-align: left;
+        }
+
+        .screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        progress {
+            background-color: red
+        }
+
+        .button {
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            background-color: var(--color-my-purple);
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .button:hover {
+            background-color: var(--color-my-yellow);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
         }
 
-        #webcam-container {
-            /* Styles spécifiques au conteneur de la webcam si nécessaire */
+        #webcam-container canvas {
+            border-radius: 10px;
+            border: solid 5px;
         }
 
-        #label-container {
-            /* Styles spécifiques au conteneur des labels si nécessaire */
-        }
         #progress-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             width: 100%;
-            position: absolute;
-            bottom: 10px; /* Ajustez cette valeur pour modifier la distance entre les barres de progression et le bas de l'écran */
-            left: 0;
-            padding: 16px;
+            padding: 5px;
             box-sizing: border-box;
-        }
-
-        progress {
-            width: 100%;
-            height: 20px;
-            margin-bottom: 8px;
         }
     </style>
     <link rel="icon" href="resources/icon_fruits_and_vegetable.png" type="image/x-icon">
     <link rel="shortcut icon" href="resources/icon_fruits_and_vegetable.png" type="image/x-icon">
 </head>
 <body>
-<div id="app">
+<div class="screen" id="app">
     <div class="container">
-        <div>Teachable Machine Image Model</div>
-        <button type="button" onclick="init()">Start</button>
+        <img src="FruitLégumeLogo.png" height="150px">
+        <button type="button" class="button" onclick="init()">Start</button>
         <div id="webcam-container"></div>
-        <div id="progress-container"></div>
+        <div class="barchart" id="progress-container"></div>
+    </div>
+    <div class="legend" id="legend">
+        <div class="flex">
+            <div id="fruit" class="legend-color"></div>
+            <div class="legend-text">Fruit</div>
+        </div>
+        <div class="flex">
+            <div id="légume" class="legend-color"></div>
+            <div class="legend-text">Légume</div>
+        </div>
     </div>
 </div>
 
