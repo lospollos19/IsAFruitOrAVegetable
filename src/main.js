@@ -44,11 +44,12 @@ async function loop() {
 
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
+    const sortedPrediction = prediction.sort((a, b) => b.probability - a.probability);
     for (let i = 0; i < maxPredictions; i++) {
-        progressContainer.childNodes[i * 2 + 1].value = prediction[i].probability;
+        progressContainer.childNodes[i * 2 + 1].value = sortedPrediction[i].probability;
         const webcam_height = document.getElementById("webcam-container").getBoundingClientRect().height
-        progressContainer.childNodes[i * 2 + 1].style.width = `${(prediction[i].probability).toFixed(4) * webcam_height}px`;
-        const newLabelText = `${(prediction[i].probability * 100).toFixed(0)}%`;
+        progressContainer.childNodes[i * 2 + 1].style.width = `${(sortedPrediction[i].probability).toFixed(4) * webcam_height}px`;
+        const newLabelText = `${(sortedPrediction[i].probability * 100).toFixed(0)}%`;
         progressLabels[i].textContent = newLabelText;
     }
     if(prediction[0].probability > 0.5) {
