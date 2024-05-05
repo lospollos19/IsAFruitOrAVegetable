@@ -1,14 +1,1 @@
-{
-  "tfjsVersion": "1.3.1",
-  "tmVersion": "2.4.7",
-  "packageVersion": "0.8.4-alpha2",
-  "packageName": "@teachablemachine/image",
-  "timeStamp": "2024-04-30T21:43:22.850Z",
-  "userMetadata": {},
-  "modelName": "Fruit ou légume",
-  "labels": [
-    "Légume",
-    "Fruit"
-  ],
-  "imageSize": 224
-}
+{"tfjsVersion":"1.3.1","tmVersion":"2.4.7","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2024-05-04T21:31:21.043Z","userMetadata":{},"modelName":"Fruit ou legume","labels":["Légumes","Fruits"],"imageSize":224}
